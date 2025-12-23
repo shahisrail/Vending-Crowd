@@ -1,0 +1,111 @@
+._visualPink_t6z0f_1 {
+  background: #f86aa9;
+  padding: 80px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+._visualPink__text_t6z0f_9 {
+  max-width: 560px;
+  color: #111;
+}
+
+._visualPink__badge_t6z0f_23 {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+._visualPink__text_t6z0f_9 h2 {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+._visualPink__text_t6z0f_9 > p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  color: #1a1a1a;
+}
+
+._visualPink__list_t6z0f_43 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 28px;
+  margin-bottom: 32px;
+  list-style: none;
+  padding: 0;
+}
+
+._visualPink__list__item_t6z0f_51 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #111;
+}
+
+._visualPink__list__item_t6z0f_51 img {
+  width: 22px;
+  height: 22px;
+}
+
+/* CTA Button wrapper if needed */
+._visualPink__text_t6z0f_9 button,
+._visualPink__text_t6z0f_9 a {
+  background: linear-gradient(135deg, #6b7cff, #8b5cf6);
+  color: #fff;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Image side */
+._visualPink__image_t6z0f_79 {
+  position: relative;
+  flex-shrink: 0;
+}
+
+._visualPink__image_t6z0f_79 img {
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  border: 3px dashed rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  ._visualPink_t6z0f_1 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  ._visualPink__list_t6z0f_43 {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  ._visualPink__image_t6z0f_79 img {
+    max-width: 100%;
+  }
+}

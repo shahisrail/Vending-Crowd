@@ -1,0 +1,232 @@
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 80px;
+  gap: 60px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Left side - Text content */
+.hero__text {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Badge */
+.hero__text__badge {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 24px;
+  width: fit-content;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+/* Heading */
+.hero__text h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* Description */
+.hero__text__description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Buttons container */
+.hero__text__buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* Primary CTA button */
+.hero__text__buttons__cta {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+  color: #ffffff !important;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__text__buttons__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 107, 53, 0.45);
+}
+
+/* Secondary button */
+.hero__text__buttons__normal {
+  background: transparent;
+  color: #1a1a1a !important;
+  border: 2px solid #e0e0e0;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__text__buttons__normal:hover {
+  background: #f8f8f8;
+  border-color: #d0d0d0;
+}
+
+/* Info/Highlights section */
+.hero__text__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.hero__text__info__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #FF6B35;
+  transition: all 0.3s ease;
+}
+
+.hero__text__info__item:hover {
+  background: #fff0e8;
+  transform: translateX(4px);
+}
+
+.hero__text__info__item img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.hero__text__info__item p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2a2a2a;
+}
+
+/* Right side - Image */
+.hero__image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero__image img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .hero {
+    padding: 40px 60px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero__text {
+    max-width: 100%;
+  }
+
+  .hero__text__badge {
+    margin: 0 auto;
+  }
+
+  .hero__text h1 {
+    font-size: 42px;
+  }
+
+  .hero__text__buttons {
+    justify-content: center;
+  }
+
+  .hero__image {
+    width: 100%;
+  }
+
+  .hero__image img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 30px 20px;
+    gap: 40px;
+  }
+
+  .hero__text h1 {
+    font-size: 32px;
+  }
+
+  .hero__text__description {
+    font-size: 16px;
+  }
+
+  .hero__text__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__text__buttons__cta,
+  .hero__text__buttons__normal {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__text__info {
+    align-items: stretch;
+  }
+
+  .hero__text__info__item {
+    padding: 10px 12px;
+  }
+
+  .hero__text__info__item p {
+    font-size: 14px;
+  }
+}
