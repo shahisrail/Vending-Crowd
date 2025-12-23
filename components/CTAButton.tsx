@@ -1,14 +1,15 @@
-type CTAButtonProps = {
-  children: React.ReactNode;
+"use client";
+import React from "react";
+
+type CTAButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   iconSrc?: string;
-  onClick?: () => void;
 };
 
-const CTAButton = ({ children, iconSrc, onClick }: CTAButtonProps) => {
+const CTAButton = ({ children, iconSrc, className, ...props }: CTAButtonProps) => {
   return (
     <button
-      onClick={onClick}
-      className="
+      {...props}
+      className={`
         inline-flex items-center gap-3
         px-8 py-4
         rounded-full
@@ -18,9 +19,11 @@ const CTAButton = ({ children, iconSrc, onClick }: CTAButtonProps) => {
         transition-all duration-300
         hover:scale-105 hover:shadow-xl
         active:scale-95
-      "
+        ${className || ""}
+      `}
     >
       <span>{children}</span>
+
       {iconSrc && (
         <img
           src={iconSrc}
