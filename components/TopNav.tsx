@@ -37,11 +37,11 @@ const TopNav = () => {
   );
 
   return (
-    <header className="relative bg-[#fff7e8] border-b border-black/10">
+    <header className="relative bg-[#fff7e8]   ">
       {/* Grid bg */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] bg-[size:90px_90px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:100px_100px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+      <div className="relative max-w-[1620px] mx-auto   py-4 flex items-center justify-between">
         {/* Left socials */}
         <div className="hidden md:flex items-center gap-3">
           {SOCIAL_LINKS.map((link) => (

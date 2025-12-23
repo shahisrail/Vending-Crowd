@@ -41,6 +41,7 @@ const initialData: FormData = {
 export default function SavingsCalculator() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(initialData);
+  const [showMore, setShowMore] = useState(false);
 
   const handleChange = (key: keyof FormData, value: string) => {
     setData({ ...data, [key]: Number(value || 0) });
@@ -48,29 +49,46 @@ export default function SavingsCalculator() {
 
   const total = Object.values(data).reduce((a, b) => a + b, 0);
 
+  const rows = [
+    { label: "Warehouse Rent/Mortgage", value: data.warehouseRent },
+    { label: "Warehouse Utilities", value: data.warehouseUtilities },
+    { label: "Truck Cost", value: data.truckLoan },
+    { label: "Truck Insurance", value: data.truckInsurance },
+    { label: "Rental Truck Cost", value: data.rentalTruck },
+    { label: "Sprinter Van", value: data.sprinterVan },
+    { label: "Gas", value: data.gas },
+    { label: "Truck Repairs (monthly average)", value: data.truckRepairs },
+    { label: "Warehouse worker Payroll (monthly average)", value: data.warehousePayroll },
+    { label: "Inventory Lost To Expiration (monthly average)", value: data.expiredInventory },
+    { label: "Vending Driver Payroll", value: data.driverPayroll },
+    { label: "Cost per number of machines", value: data.machines },
+    { label: "Hours Spent servicing and filling machines", value: data.workHours },
+    { label: "VendingCrowd Plan Need", value: 0 },
+    { label: "Tolls", value: data.tolls },
+  ];
+
+  const visibleRows = showMore ? rows : rows.slice(0, 7);
+
   return (
-    <section className="bg-[#FFF9EE] py-20">
-      <h2 className="text-4xl md:text-5xl font-semibold text-center mb-12">
+    <section className="bg-[#FFF9EE] py-24">
+      <h2 className="text-4xl md:text-5xl font-semibold text-center mb-16">
         Savings Calculator
       </h2>
 
-      <div className="max-w-7xl mx-auto bg-[#F3F4FA] rounded-[32px] p-8 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8">
+      <div className="max-w-[1620px] mx-auto bg-[#F3F4FA] rounded-[32px] p-8 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-10">
         {/* LEFT */}
         <div>
-          <p className="text-sm text-gray-500 mb-1">
+          <p className="text-sm text-gray-500 mb-2">
             Your Current Operational Costs (Monthly)
-          </p>
-          <p className="text-xs text-gray-400 mb-6">
-            Enter roughly how much you currently spend each month to operate.
           </p>
 
           {/* Progress */}
-          <div className="flex items-center gap-2 mb-6">
-            {[1, 2, 3].map((s) => (
+          <div className="flex items-center gap-1 mb-6">
+            {[1, 2, 3].map((i) => (
               <div
-                key={s}
-                className={`h-2 w-10 rounded-full ${
-                  step >= s ? "bg-green-400" : "bg-gray-200"
+                key={i}
+                className={`h-2 w-8 rounded-full ${
+                  step >= i ? "bg-green-400" : "bg-gray-200"
                 }`}
               />
             ))}
@@ -122,11 +140,11 @@ export default function SavingsCalculator() {
           )}
 
           {/* Buttons */}
-          <div className="flex items-center justify-between mt-10">
+          <div className="flex justify-between mt-10">
             {step > 1 && (
               <button
                 onClick={() => setStep(step - 1)}
-                className="px-6 py-3 rounded-full bg-indigo-600 text-white font-medium"
+                className="px-7 py-3 rounded-full bg-indigo-600 text-white font-medium"
               >
                 ← Go To Previous
               </button>
@@ -135,45 +153,68 @@ export default function SavingsCalculator() {
             {step < 3 ? (
               <button
                 onClick={() => setStep(step + 1)}
-                className="ml-auto px-6 py-3 rounded-full bg-indigo-600 text-white font-medium"
+                className="ml-auto px-7 py-3 rounded-full bg-indigo-600 text-white font-medium"
               >
                 Continue To Next →
               </button>
             ) : (
-              <button className="ml-auto px-8 py-3 rounded-full bg-indigo-600 text-white font-medium">
+              <button className="ml-auto px-7 py-3 rounded-full bg-indigo-600 text-white font-medium">
                 Calculate
               </button>
             )}
           </div>
         </div>
 
-        {/* RIGHT */}
-        <div className="bg-[#F7F8FD] rounded-[28px] p-6 flex flex-col">
+        {/* RIGHT SUMMARY */}
+        <div className="bg-[#F7F8FD] rounded-[28px] p-8 flex flex-col">
           {/* Gauge */}
-          <div className="text-center mb-6">
-            <div className="relative mx-auto w-48 h-24 overflow-hidden">
-              <div className="absolute inset-0 rounded-t-full border-[12px] border-pink-100 border-b-0" />
+          <div className="relative flex justify-center mb-6">
+            <div className="w-56 h-28 border-[14px] border-pink-100 border-b-0 rounded-t-full" />
+            <div className="absolute bottom-0 text-center">
+              <div className="text-4xl font-bold">${total.toFixed(0)}</div>
+              <p className="text-sm text-gray-500">Your Total Monthly Spend</p>
             </div>
-            <div className="text-4xl font-bold -mt-2">${total.toFixed(0)}</div>
-            <p className="text-sm text-gray-500">Your Total Monthly Spend</p>
           </div>
 
-          <div className="bg-white rounded-xl p-4 text-xs text-gray-600 mb-6">
+          <div className="bg-white rounded-2xl p-4 text-sm text-gray-600 mb-6">
             NOTE: This savings calculation assumes that you fill your vending
             machines at least twice per month.
           </div>
 
-          <div className="flex-1 text-sm space-y-2">
+          <div className="text-sm space-y-3 mb-4">
             <h4 className="font-semibold">Your Savings!</h4>
-            <p className="text-gray-500">
-              This is how VendingCrowd can save you time and $$$!
-            </p>
 
-            <div className="pt-3 border-t text-black space-y-2">
-              <Row label="Total Cost" value={`$${total.toFixed(2)}`} />
-              <Row label="Savings In %" value="0%" />
-              <Row label="Cost Savings $" value="$0" />
-              <Row label="Cost Savings $ Per Year" value="$0" />
+            {visibleRows.map((row) => (
+              <div key={row.label} className="flex justify-between">
+                <span>{row.label}</span>
+                <strong>${row.value.toFixed(2)}</strong>
+              </div>
+            ))}
+
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="text-indigo-600 text-xs underline mt-2"
+            >
+              {showMore ? "show less" : "show more"}
+            </button>
+
+            <hr className="my-3" />
+
+            <div className="flex justify-between font-medium">
+              <span>Total Cost</span>
+              <strong>${total.toFixed(2)}</strong>
+            </div>
+            <div className="flex justify-between">
+              <span>Savings In %</span>
+              <strong>0%</strong>
+            </div>
+            <div className="flex justify-between">
+              <span>Cost Savings $</span>
+              <strong>$0</strong>
+            </div>
+            <div className="flex justify-between">
+              <span>Cost Savings $ Per Year</span>
+              <strong>$0</strong>
             </div>
           </div>
         </div>
@@ -183,9 +224,12 @@ export default function SavingsCalculator() {
 }
 
 /* Helpers */
-
 function Grid({ children }: { children: React.ReactNode }) {
-  return <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{children}</div>;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {children}
+    </div>
+  );
 }
 
 function Input({
@@ -202,17 +246,8 @@ function Input({
         type="number"
         placeholder="Type here"
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white outline-none focus:ring-2 focus:ring-indigo-400"
+        className="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white outline-none focus:ring-2 focus:ring-indigo-400"
       />
-    </div>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex justify-between">
-      <span>{label}</span>
-      <strong>{value}</strong>
     </div>
   );
 }

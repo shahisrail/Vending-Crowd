@@ -17,15 +17,14 @@ export default function HowItWorks() {
 
   return (
     <section className="bg-[#FFC425] h-screen overflow-hidden">
-      <div className="max-w-screen-xl mx-auto h-full flex flex-col px-6">
+      <div className="max-w-7xl mx-auto h-full flex flex-col px-6">
         {/* Header */}
-        <div className="pt-14 pb-6 shrink-0">
-          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-3">
-            How It Works
-          </h2>
-          <p className="max-w-3xl mx-auto text-center text-black/80">
-            VendingCrowd&apos;s order request system allows operators to
-            dispatch workers to restock, fix, or collect cash deposits.
+        <div className="pt-16 pb-10 shrink-0 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
+          <p className="max-w-3xl mx-auto text-black/80">
+            VendingCrowd&apos;s order request system is completely self-managed
+            and allows operators to dispatch workers to restock, fix, or collect
+            cash deposits.
           </p>
         </div>
 
@@ -34,10 +33,10 @@ export default function HowItWorks() {
           ref={scrollRef}
           onScroll={handleScroll}
           className="relative flex-1 overflow-y-auto scroll-smooth
-                     [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
+          [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
         >
           {/* Center Timeline */}
-          <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-full w-10 flex justify-center">
+          <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-full w-16 flex justify-center">
             {/* Track */}
             <div className="absolute h-full w-1 bg-yellow-600/40 rounded-full" />
             {/* Progress */}
@@ -53,7 +52,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Steps */}
-          <div className="relative space-y-40 py-24">
+          <div className="relative space-y-48 py-24">
             {HOW_IT_WORKS_STEPS.map((step, index) => {
               const isLeft = index % 2 === 0;
 
@@ -65,17 +64,18 @@ export default function HowItWorks() {
                   }`}
                 >
                   {/* Step Number */}
-                  <div className="absolute left-1/2 -translate-x-1/2 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center font-semibold">
+                  <div className="absolute left-1/2 -translate-x-1/2 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold">
                     {index + 1}
                   </div>
 
-                  {/* Card */}
+                  {/* Content */}
                   <div
-                    className={`bg-white rounded-3xl shadow-xl p-6 md:p-8 max-w-md w-full ${
-                      isLeft ? "mr-auto pr-16" : "ml-auto pl-16"
+                    className={`flex items-center gap-12 max-w-3xl w-full ${
+                      isLeft ? "flex-row pr-24" : "flex-row-reverse pl-24"
                     }`}
                   >
-                    <div className="relative w-full h-56 mb-5 rounded-2xl overflow-hidden">
+                    {/* Image */}
+                    <div className="relative w-[380px] h-[280px] rounded-3xl overflow-hidden shadow-xl">
                       <Image
                         src={step.image}
                         alt={step.title}
@@ -83,10 +83,14 @@ export default function HowItWorks() {
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="font-semibold text-lg mb-1">
-                      Step {index + 1}
-                    </h3>
-                    <p className="text-black/80">{step.title}</p>
+
+                    {/* Text */}
+                    <div className="max-w-md">
+                      <p className="text-sm font-semibold mb-2">{index + 1}</p>
+                      <h3 className="text-2xl md:text-3xl font-bold leading-snug">
+                        {step.title}
+                      </h3>
+                    </div>
                   </div>
                 </div>
               );

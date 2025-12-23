@@ -1,33 +1,33 @@
-"use client";
+type CTAButtonProps = {
+  children: React.ReactNode;
+  iconSrc?: string;
+  onClick?: () => void;
+};
 
-import clsx from "clsx";
-import type { ButtonHTMLAttributes, PropsWithChildren } from "react";
-
-export type CTAButtonProps = PropsWithChildren<
-  {
-    iconSrc?: string;
-  } & ButtonHTMLAttributes<HTMLButtonElement>
->;
-
-const CTAButton = ({
-  iconSrc,
-  className,
-  children,
-  type = "button",
-  ...buttonProps
-}: CTAButtonProps) => {
-  const iconPath = iconSrc && (iconSrc.startsWith("/") ? iconSrc : `/${iconSrc}`);
-
+const CTAButton = ({ children, iconSrc, onClick }: CTAButtonProps) => {
   return (
     <button
-      type={type}
-      className={clsx("_ctaButton_7kf3y_1", className)}
-      {...buttonProps}
+      onClick={onClick}
+      className="
+        inline-flex items-center gap-3
+        px-8 py-4
+        rounded-full
+        text-white font-semibold text-lg
+        bg-gradient-to-b from-indigo-400 to-indigo-700
+        shadow-lg
+        transition-all duration-300
+        hover:scale-105 hover:shadow-xl
+        active:scale-95
+      "
     >
-      <p>{children}</p>
-      {iconPath ? (
-        <img src={iconPath} alt="" />
-      ) : null}
+      <span>{children}</span>
+      {iconSrc && (
+        <img
+          src={iconSrc}
+          alt=""
+          className="w-5 h-5"
+        />
+      )}
     </button>
   );
 };
