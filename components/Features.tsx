@@ -38,7 +38,7 @@ const Features = () => (
           }}
         >
           {/* Overlay */}
-          <div className="absolute inset-0 bg-white/30" />
+          {/* <div className="absolute inset-0 bg-white/30" /> */}
 
           <div className="relative z-10">
             <h3 className="text-lg sm:text-xl lg:text-[24px] font-extrabold mb-2 sm:mb-3">

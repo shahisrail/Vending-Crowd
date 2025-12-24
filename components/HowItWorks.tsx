@@ -6,20 +6,29 @@ import { useRef, useState } from "react";
 
 export default function HowItWorks() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
 
   const handleScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const max = el.scrollHeight - el.clientHeight;
-    setProgress((el.scrollTop / max) * 100);
+    const scrollEl = scrollRef.current;
+    const stepsEl = stepsRef.current;
+    if (!scrollEl || !stepsEl) return;
+
+    const scrollTop = scrollEl.scrollTop;
+    const viewportHeight = scrollEl.clientHeight;
+    const stepsHeight = stepsEl.scrollHeight;
+
+    const maxScroll = stepsHeight - viewportHeight;
+    const percent = (scrollTop / maxScroll) * 100;
+
+    setProgress(Math.min(100, Math.max(0, percent)));
   };
 
   return (
     <section className="bg-[#FFC425] h-screen overflow-hidden">
-      <div className="max-w-7xl mx-auto h-full flex flex-col px-6">
-        {/* Header */}
-        <div className="pt-16 pb-10 shrink-0 text-center">
+      <div className="max-w-7xl mx-auto h-full flex flex-col px-6 py-16">
+        {/* HEADER */}
+        <div className="pb-10 shrink-0 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
           <p className="max-w-3xl mx-auto text-black/80">
             VendingCrowd&apos;s order request system is completely self-managed
@@ -28,69 +37,103 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        {/* Scroll Area */}
+        {/* SCROLL AREA */}
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="relative flex-1 overflow-y-auto scroll-smooth
+          className="relative flex-1 overflow-y-auto
           [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
         >
-          {/* Center Timeline */}
-          <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-full w-16 flex justify-center">
-            {/* Track */}
-            <div className="absolute h-full w-1 bg-yellow-600/40 rounded-full" />
-            {/* Progress */}
-            <div
-              className="absolute top-0 w-1 bg-gradient-to-b from-pink-500 to-yellow-400 rounded-full"
-              style={{ height: `${progress}%` }}
-            />
-            {/* Knob */}
-            <div
-              className="absolute w-5 h-5 rounded-full bg-pink-500 shadow-md"
-              style={{ top: `calc(${progress}% - 10px)` }}
-            />
-          </div>
+          {/* STEPS WRAPPER */}
+          <div ref={stepsRef} className="relative py-24 space-y-40">
+            {/* CENTER LINE */}
+            <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-full">
+              <div
+                className="
+    relative h-full
+    w-[8px]        /* mobile */
+    sm:w-[10px]   /* small */
+    md:w-[14px]   /* desktop */
+  "
+              >
+                {/* BACK LINE */}
+                <div className="absolute inset-0 bg-[#FFD966] rounded-full" />
 
-          {/* Steps */}
-          <div className="relative space-y-48 py-24">
+                {/* FILL (ENDS FLAT) */}
+                <div
+                  className="
+        absolute top-0 left-0 w-full
+        bg-gradient-to-b from-pink-500 to-pink-400
+        rounded-t-full
+        transition-[height] duration-300 ease-out
+      "
+                  style={{ height: `${progress}%` }}
+                />
+
+                {/* FINAL ROUND END (THIS makes it গোল) */}
+                <div
+                  className="
+        absolute bottom-0 left-1/2 -translate-x-1/2
+        w-7 h-7 bg-pink-400
+        rounded-full
+      "
+                />
+              </div>
+            </div>
+
+            {/* STEPS */}
             {HOW_IT_WORKS_STEPS.map((step, index) => {
-              const isLeft = index % 2 === 0;
+              const isOdd = (index + 1) % 2 !== 0;
 
               return (
                 <div
                   key={step.title}
-                  className={`relative flex items-center ${
-                    isLeft ? "justify-start" : "justify-end"
-                  }`}
+                  className="relative flex items-center justify-between"
                 >
-                  {/* Step Number */}
-                  <div className="absolute left-1/2 -translate-x-1/2 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold">
-                    {index + 1}
+                  {/* LEFT SIDE */}
+                  <div className="w-[45%] flex justify-end ">
+                    {isOdd ? (
+                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 semi-sm:w-40 semi-sm:h-40 md:w-60 md:h-60 lg:w-125 lg:h-125 rounded-3xl overflow-hidden shadow-xl">
+                        <Image
+                          src={step.image}
+                          alt={step.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="max-w-md md:pl-20 lg:pl-0">
+                        <p className="text-base font-semibold mb-2 bg-white w-10 h-10 rounded-full flex items-center justify-center">
+                          {index + 1}
+                        </p>
+                        <h3 className=" md:text-xl lg:text-3xl font-bold ">
+                          {step.title}
+                        </h3>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Content */}
-                  <div
-                    className={`flex items-center gap-12 max-w-3xl w-full ${
-                      isLeft ? "flex-row pr-24" : "flex-row-reverse pl-24"
-                    }`}
-                  >
-                    {/* Image */}
-                    <div className="relative w-[380px] h-[280px] rounded-3xl overflow-hidden shadow-xl">
-                      <Image
-                        src={step.image}
-                        alt={step.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-
-                    {/* Text */}
-                    <div className="max-w-md">
-                      <p className="text-sm font-semibold mb-2">{index + 1}</p>
-                      <h3 className="text-2xl md:text-3xl font-bold leading-snug">
-                        {step.title}
-                      </h3>
-                    </div>
+                  {/* RIGHT SIDE */}
+                  <div className="w-[45%]">
+                    {isOdd ? (
+                      <div className="max-w-md md:pr-20 lg:pr-0">
+                        <p className="text-base font-semibold mb-2 bg-white w-10 h-10 rounded-full flex items-center justify-center">
+                          {index + 1}
+                        </p>
+                        <h3 className=" md:text-xl lg:text-3xl font-bold">
+                          {step.title}
+                        </h3>
+                      </div>
+                    ) : (
+                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 semi-sm:w-40 semi-sm:h-40 md:w-60 md:h-60 lg:w-125 lg:h-125 rounded-3xl overflow-hidden shadow-xl">
+                        <Image
+                          src={step.image}
+                          alt={step.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               );

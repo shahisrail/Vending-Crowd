@@ -75,7 +75,7 @@ export default function SavingsCalculator() {
         Savings Calculator
       </h2>
 
-      <div className="max-w-[1620px] mx-auto bg-[#F3F4FA] rounded-[32px] p-8 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-10">
+      <div className=" mx-3 semi-sm:mx-5 lg:mx-10 bg-[#F3F4FA] rounded-[32px] p-8 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-10">
         {/* LEFT */}
         <div>
           <p className="text-sm text-gray-500 mb-2">
@@ -153,7 +153,7 @@ export default function SavingsCalculator() {
             {step < 3 ? (
               <button
                 onClick={() => setStep(step + 1)}
-                className="ml-auto px-7 py-3 rounded-full bg-indigo-600 text-white font-medium"
+                className="mr-auto px-7 py-3 rounded-full bg-indigo-600 text-white font-medium"
               >
                 Continue To Next →
               </button>

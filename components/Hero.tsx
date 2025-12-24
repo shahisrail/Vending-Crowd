@@ -90,11 +90,11 @@ const Hero = ({ onJoinAcademy }: HeroProps) => (
       </div>
 
       {/* Right image (unchanged for lg+) */}
-      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2">
+      <div className="hidden lg:block absolute -right-20 top-[400px] -translate-y-1/2">
         <img
           src={HERO_IMAGE.src}
           alt={HERO_IMAGE.alt}
-          className="w-[640px] xl:w-[700px] 2xl:w-[700px] h-[900px] object-contain drop-shadow-2xl"
+          className="w-[850px]  h-[750px]  drop-shadow-2xl"
         />
       </div>
     </div>

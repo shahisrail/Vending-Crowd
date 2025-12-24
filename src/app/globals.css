@@ -1,2 +1,9 @@
 @import "tailwindcss";
- 
+
+/* Theme Config */
+@theme {
+  --font-poppins: "Poppins", "sans-serif";
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 375px;
+  --breakpoint-semi-sm: 425px;
+}
