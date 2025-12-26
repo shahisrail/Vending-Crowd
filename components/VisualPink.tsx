@@ -37,7 +37,7 @@ const VisualPink = ({ onJoinAcademy }: VisualPinkProps) => (
           })}
         </ul>
 
-        <CTAButton iconSrc="/icons/right-arrow.svg" onClick={onJoinAcademy}>
+        <CTAButton className="bg-[#736ECA]" iconSrc="/icons/right-arrow.svg" onClick={onJoinAcademy}>
           Join Academy
         </CTAButton>
       </div>

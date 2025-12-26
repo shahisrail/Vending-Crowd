@@ -3,53 +3,60 @@ import { FEATURE_CARDS } from "@/lib/siteData";
 const Features = () => (
   <section
     aria-labelledby="features-heading"
-    className="
-      mx-auto px-4 sm:px-6 py-12 sm:py-16
-      lg:min-w-[1620px]
-    "
+    className="mx-auto px-4 sm:px-6 py-12 sm:py-16 xl:min-w-[1620px]"
   >
     <h2
       id="features-heading"
-      className="
-        text-2xl sm:text-3xl md:text-5xl lg:text-6xl
-        font-bold text-center mb-8 sm:mb-12 text-gray-900
-      "
+      className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 text-gray-900"
     >
       Time and Cost Saving Solutions
     </h2>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {FEATURE_CARDS.map(({ title, des, image, color, light }) => (
-        <article
-          key={title}
-          className="
-            relative overflow-hidden rounded-[20px] sm:rounded-[28px]
-            min-h-[320px] sm:min-h-[380px] lg:min-h-[480px]
-            p-5 sm:p-6 lg:p-8
-            flex flex-col justify-between
-            bg-cover bg-center bg-no-repeat
-            shadow-lg transition-all duration-300
-            hover:-translate-y-1.5 hover:shadow-2xl
-          "
-          style={{
-            backgroundColor: color,
-            backgroundImage: `url(${image})`,
-            color: light ? "#1d1d1d" : undefined,
-          }}
-        >
-          {/* Overlay */}
-          {/* <div className="absolute inset-0 bg-white/30" /> */}
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
-          <div className="relative z-10">
-            <h3 className="text-lg sm:text-xl lg:text-[24px] font-extrabold mb-2 sm:mb-3">
-              {title}
-            </h3>
-            <p className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-[90%] lg:max-w-[80%]">
-              {des}
-            </p>
-          </div>
-        </article>
-      ))}
+      {FEATURE_CARDS.map(({ title, des, image, color }, index) => {
+        const isWhiteText = index === 2 || index === 4;
+
+        return (
+          <article
+            key={title}
+            className="relative overflow-hidden rounded-2xl aspect-[4/3] p-4 sm:p-6 flex flex-col shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            style={{ backgroundColor: color }}
+          >
+            <img
+              src={image}
+              alt={title}
+              className={`absolute inset-0 w-full h-full transition-all duration-300
+                ${
+                  index === 0
+                    ? "object-contain scale-100"
+                    : index === 1
+                    ? "object-contain scale-95"
+                    : "object-cover"
+                }
+              `}
+            />
+
+            {isWhiteText && (
+              <div className="absolute inset-0 bg-black/50" />
+            )}
+
+            {/* Content */}
+            <div
+              className={`relative z-10 
+                text-white md:${isWhiteText ? "text-white" : "text-black"}
+              `}
+            >
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-tight mb-2">
+                {title}
+              </h3>
+              <p className="text-sm sm:text-base md:text-lg leading-snug max-w-[95%] opacity-90">
+                {des}
+              </p>
+            </div>
+          </article>
+        );
+      })}
     </div>
   </section>
 );

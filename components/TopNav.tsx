@@ -41,7 +41,7 @@ const TopNav = () => {
       {/* Grid bg */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:100px_100px] pointer-events-none" />
 
-      <div className="relative max-w-[1620px] mx-auto   py-4 flex items-center justify-between">
+      <div className="relative xl:min-w-[1620px] mx-auto px-20 py-4 flex items-center justify-between">
         {/* Left socials */}
         <div className="hidden md:flex items-center gap-3">
           {SOCIAL_LINKS.map((link) => (

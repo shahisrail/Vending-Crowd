@@ -144,7 +144,7 @@ export default function SavingsCalculator() {
             {step > 1 && (
               <button
                 onClick={() => setStep(step - 1)}
-                className="px-7 py-3 rounded-full bg-indigo-600 text-white font-medium"
+                className="px-7 py-3 rounded-full bg-[#736ECA] text-white font-medium"
               >
                 ← Go To Previous
               </button>
@@ -153,12 +153,12 @@ export default function SavingsCalculator() {
             {step < 3 ? (
               <button
                 onClick={() => setStep(step + 1)}
-                className="mr-auto px-7 py-3 rounded-full bg-indigo-600 text-white font-medium"
+                className="mr-auto px-7 py-3 rounded-full bg-[#736ECA] text-white font-medium"
               >
                 Continue To Next →
               </button>
             ) : (
-              <button className="ml-auto px-7 py-3 rounded-full bg-indigo-600 text-white font-medium">
+              <button className="ml-auto px-7 py-3 rounded-full bg-[#736ECA] text-white font-medium">
                 Calculate
               </button>
             )}
