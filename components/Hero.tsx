@@ -16,7 +16,7 @@ type HeroProps = {
 const Hero = ({ onJoinAcademy }: HeroProps) => (
   <section
     aria-labelledby="hero-heading"
-    className="relative bg-[#FFF7E8] xl:h-screen overflow-hidden
+    className="relative bg-[#FFF7E8]  h-screen overflow-hidden
                px-4 sm:px-8 lg:px-12 xl:px-20
                pt-20 pb-24 lg:pb-32"
   >
@@ -24,7 +24,7 @@ const Hero = ({ onJoinAcademy }: HeroProps) => (
     <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:100px_100px] pointer-events-none" />
 
     <div
-      className="relative mx-auto  xl:min-w-[1620px]
+      className="relative  min-w-[1620px] mx-auto  
                  flex flex-col xl:flex-row
                  items-center gap-16"
     >

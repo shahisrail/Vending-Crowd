@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-gray-300 pt-16">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="bg-black xl:min-w-[1620px] mx-auto text-gray-300 pt-16">
+      <div className="   px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left: Logo & About */}
         <div>
           <Image

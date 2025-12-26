@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className=" xl:min-w-[1620px] mx-auto">
       <TopNav />
       <Hero onJoinAcademy={handleOpenAcademy} />
       <AcademyHero />
@@ -26,6 +26,6 @@ export default function Home() {
       <SavingsCalculator/>
       <VisualPink onJoinAcademy={handleOpenAcademy} />
       <FAQ/>
-    </>
+    </div>
   );
 }

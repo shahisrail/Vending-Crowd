@@ -37,9 +37,10 @@ const VisualPink = ({ onJoinAcademy }: VisualPinkProps) => (
           })}
         </ul>
 
-        <CTAButton className="bg-[#736ECA]" iconSrc="/icons/right-arrow.svg" onClick={onJoinAcademy}>
-          Join Academy
-        </CTAButton>
+    
+        <button className="w-fit bg-gradient-to-r from-[#6D66C7] to-[#8A85E6] text-white px-7 py-3 rounded-full font-medium hover:opacity-90 transition">
+              Join Academy →
+            </button>
       </div>
 
       {/* Right Image */}

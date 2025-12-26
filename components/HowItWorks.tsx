@@ -25,8 +25,8 @@ export default function HowItWorks() {
   };
 
   return (
-    <section className="bg-[#FFC425] h-screen overflow-hidden">
-      <div className="max-w-7xl mx-auto h-full flex flex-col px-6 py-16">
+    <section className="bg-[#FFC425]  h-screen overflow-hidden ">
+      <div className="max-w-7xl mx-auto h-full flex flex-col px-6 py-5">
         {/* HEADER */}
         <div className="pb-10 shrink-0 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
@@ -41,7 +41,7 @@ export default function HowItWorks() {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="relative flex-1 overflow-y-auto
+          className="relative flex-1  overflow-y-auto
           [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
         >
           {/* STEPS WRAPPER */}

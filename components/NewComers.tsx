@@ -6,7 +6,7 @@ import { NEW_COMER_AVATARS, NEW_COMER_FEATURES } from "@/lib/siteData";
 
 export default function NewComers() {
   return (
-    <section className="bg-black text-white py-10 px-10">
+    <section className="bg-black  text-white py-10 px-10">
       <div className="  mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-between ">
         {/* Left Content */}
         <div>
