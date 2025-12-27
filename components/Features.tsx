@@ -3,7 +3,7 @@ import { FEATURE_CARDS } from "@/lib/siteData";
 const Features = () => (
   <section
     aria-labelledby="features-heading"
-    className="mx-auto px-4 sm:px-6 py-12 sm:py-16 xl:min-w-[1620px]"
+    className="mx-auto px-4 sm:px-6 py-12 sm:py-16 xl:min-w-[1280px]"
   >
     <h2
       id="features-heading"

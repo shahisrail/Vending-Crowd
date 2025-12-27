@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <div className=" xl:min-w-[1620px] mx-auto">
+    <div className=" xl:min-w-[1280px] mx-auto">
       <TopNav />
       <Hero onJoinAcademy={handleOpenAcademy} />
       <AcademyHero />
